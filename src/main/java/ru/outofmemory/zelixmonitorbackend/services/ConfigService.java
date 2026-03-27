@@ -12,6 +12,7 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.UUID;
 
 @Log4j2
@@ -65,8 +66,8 @@ public class ConfigService {
         this.writeConfig();
     }
 
-    public void delMiner(UUID id) {
-        this.config.getMiners().removeIf(configMiner -> id.equals(configMiner.getUuid()));
+    public void deleteMiners(List<UUID> uuids) {
+        this.config.getMiners().removeIf(m -> uuids.contains(m.getUuid()));
         this.writeConfig();
     }
 }

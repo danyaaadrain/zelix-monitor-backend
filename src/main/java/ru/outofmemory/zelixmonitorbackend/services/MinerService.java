@@ -97,8 +97,7 @@ public class MinerService {
 
     public void deleteMiners(List<UUID> uuids) {
         this.miners.removeIf(m -> uuids.contains(m.getUuid()));
-        configService.getConfig().getMiners().removeIf(m -> uuids.contains(m.getUuid()));
-        configService.writeConfig();
+        configService.deleteMiners(uuids);
     }
 }
 
